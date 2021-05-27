@@ -1,0 +1,8 @@
+<% if @login_user %>
+    <div class="show-nav-list">
+        <li><%= link_to("ルーム登録", new_room_path, {class:"link black"}) %></li>
+        <li><%= link_to("予約済みルーム一覧", "/users/#{@login_user.id}/rooms", {class:"link black"}) %></li>
+        <li><%= link_to("登録済みルーム一覧", users_path(@login_user.id), {class:"link black"})%></li>
+        <li><%= link_to("ログアウト", logout_path, {method: "post", class: "link black"}) %></li>
+    </div>
+<% end %>

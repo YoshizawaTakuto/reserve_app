@@ -1,0 +1,26 @@
+<div class="room-index">
+    <div class="container">
+        <div class="room-index-title">
+            <h2><%= "検索結果：#{@rooms_count}件" %></h2>
+        </div>
+        <div class="room-index-contents">
+        <ul>
+         <% @rooms.each do |room|%>
+            <div class="room-index-content">
+             <li>
+              <%= link_to(room) do %>
+                <div class="room-content-image">
+                    <%= image_tag room.image.url, class:"index-img"%>
+                </div>
+                <div class="room-content-info">
+                    <p class="room-name"><%= room.name %></p>
+                    <p class="room-address"><%= room.address %></p>
+                    <p class="room-fee"><%= "#{room.fee}円" %></p>
+                </div>
+              <% end %>
+             </li>
+            </div>
+         <% end %>
+        </ul>
+    </div>
+</div>

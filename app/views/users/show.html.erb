@@ -1,0 +1,38 @@
+<div class="show">
+    <div class="container">
+        <div class="show-wrapper">
+            <div class="show-nav">
+                <p class="active">アカウント</p>
+            </div>
+            <div class="show-content">
+                <div class="show-content-wrapper">
+                    <div class="show-line user-image">
+                          <%= image_tag @user.image.url, class: "user-img" %>
+                    </div>
+                    <div class="show-line">
+                        <h4>名前</h4>
+                        <p><%= @user.name %></p>
+                    </div>
+                    <div class="show-line">
+                        <h4>メールアドレス</h4>
+                        <p><%= @user.email %></p>
+                    </div>
+                    <div class="show-line">
+                        <h4>自己紹介</h4>
+                        <p><%= @user.content %></p>
+                    </div>
+                    <% if @login_user.id == params[:id].to_i%>
+                    <div class="show-update">
+                        <%= link_to("編集", edit_user_path(@user.id), {class:"update-btn btn link"}) %>
+                    </div>
+                    <% end %>
+                    <% if @login_user.id != params[:id].to_i%>
+                    <div class="show-update">
+                        <%= link_to("#{@user.name}の登録済みルーム一覧", "/users/#{@user.id}/index", {class:"update-btn btn link"}) %>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
