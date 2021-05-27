@@ -12,7 +12,7 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     if @room.save
       flash[:notice] = "ルームを登録しました"
-      redirect_to(users_path(@login_user.id))
+      redirect_to("/users/#{@login_user.id}/index")
     else
       render("rooms/new")
     end

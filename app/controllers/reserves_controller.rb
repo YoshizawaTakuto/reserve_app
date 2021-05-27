@@ -5,7 +5,7 @@ class ReservesController < ApplicationController
   end
 
   def new
-    if params[:start_day] && params[:end_day] && params[:count] 
+    if params[:start_day] and params[:end_day] and params[:count]
       @room = Room.find(params[:id])
       @start_day = params[:start_day].to_date
       if @start_day < Date.today

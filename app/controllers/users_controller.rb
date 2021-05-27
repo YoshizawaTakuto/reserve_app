@@ -5,11 +5,7 @@ class UsersController < ApplicationController
   before_action :no_edit, {only: [:edit, :update]}
   
   def index
-    if @login_user
-      @user = @login_user
-    else
-      @user = User.find(params[:id])
-    end
+    @user = User.find(params[:id])
     @rooms = @user.rooms
   end
 
@@ -38,7 +34,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if @user.update(params.require(:user).permit(:name, :email, :image, :content))
       redirect_to(@user)
     else
       render("users/edit")

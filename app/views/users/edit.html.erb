@@ -3,27 +3,25 @@
         <div class="sign-up-wrapper edit-wrapper">
             <p class="sign-up-title">アカウント編集</p>
              <%= form_with(model: @user) do |f| %>
+              <%= render "shared/error", model: @user %>
               <ul>
                <li>
                 <p><%= f.label :image, "画像", class: "edit-label" %></p>
                 　　<%= image_tag @login_user.image.url, class: "user-img" %>
                 <%= f.file_field :image, class: "text-field" %>
-                <%= render "shared/error", model: @user, attribute: :date %>
                </li>
                <li>
                 <p><%= f.label :name, "名前", class: "edit-label" %></p>
                 <%= f.text_field :name, class: "text-field", placeholder: "ユーザー名" %>
-                <%= render "shared/error", model: @user, attribute: :date %>
                </li>
                <li>
                 <p><%= f.label :email, "メールアドレス", class: "edit-label" %></p>
                 <%= f.text_field :email, class: "text-field", placeholder: "メールアドレス" %>
-                <%= render "shared/error", model: @user, attribute: :date %>
                </li>
                <li>
                 <p><%= f.label :content, "自己紹介", class: "edit-label" %></p>
                 <%= f.text_area :content, class: "text-field", placeholder: "自己紹介" %>
-                <%= render "shared/error", model: @user, attribute: :date %>
+                <%= render "shared/error", model: @user %>
                </li>
                <p><%= f.submit "更新", class: "submit btn" %></p>
              <% end %>

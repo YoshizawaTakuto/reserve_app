@@ -23,8 +23,8 @@
             </div>
             <div class="show-room-reserve">
                 <h3><%="¥ #{@room.fee} / 日"%></h3>
+                <p class="error"><%= @nil_error %></p>
                 <%= form_with(url: "/reserves/#{@room.id}/new", method: :post) do |f| %>
-                                    
                  <p><%= f.label :start_day, "開始日", class:"label" %></p>
                  <p class="error"><%= @start_error %></p>
                  <%= f. date_field :start_day, class: "reserve-field" %>

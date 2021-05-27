@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'reserves/:id/new' => 'reserves#new'
   post 'reserves/create' => 'reserves#create'
 
-  get 'rooms/index' => "rooms#index"
   get 'rooms/search' => "rooms#search"
   post 'rooms/search' => "rooms#search"
   get 'rooms/tokyo' => 'rooms#tokyo'
