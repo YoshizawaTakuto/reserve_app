@@ -7,10 +7,59 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
   </head>
 
   <body>
+    <header>
+      <div class="container">
+        <div class="header-wrapper">
+          <div class="header-left">
+            <h1><%= link_to("Room Share", "/", {class: "link"}) %></h1>
+            <div class="header-search">
+              <ul>
+                <%= form_with(url: rooms_search_path) do |f| %>
+                  <li><%= f.text_field :search, {class:"header-field fa", placeholder:"\uf3c5 エリア"} %></li>
+                <% end %>
+                <%= form_with(url: rooms_search_path) do |f| %>
+                  <li><%= f.text_field :search, {class:"header-field fa", placeholder:"\uf002 キーワード"} %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="header-right">
+            <div class="header-nav">
+                <% if @login_user %>
+                <ul class="login">
+                  <div class="header-nav-user">
+                    <li><%= link_to(@login_user.name, @login_user, {class: "link header-user"}) %></li>
+                    <li><%= image_tag @login_user.image.url, {class: "header-img", id: "show-nav"} %></li>
+                  </div>
+                </ul>
+                <% else %>
+                <ul class ="no-login">
+                  <li><%= link_to("ログイン", login_path, {class: "login-btn btn link"}) %></li>
+                  <li><%= link_to("新規登録", new_user_path, {class: "signup-btn btn link"}) %></li>
+                </ul>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <% if flash[:notice] %>
+     <div class="flash">
+      <%= flash[:notice] %>
+     </div>
+    <% end %>
     <%= yield %>
+    <%= render("shared/show_nav") %>
+    <footer>
+      <p>© 2020 POTEPAN.INC.</p>
+    </footer>
   </body>
 </html>

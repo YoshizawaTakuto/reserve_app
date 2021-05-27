@@ -1,0 +1,34 @@
+<div class="new-reserve">
+    <div class="container">
+        <div class="new-reserve-wrapper">
+            <div class="new-reserve-title">
+                <h1>予約内容確認</h1>
+            </div>
+            <div class="new-reserve-content">
+                <h3><%="¥ #{@room.fee} / 日"%></h3>
+                <%= form_with(url: "/reserves/create", method: :post) do |f| %>
+                 <div class="reserve-line">
+                    <p><%= f.label :start_day, "開始日", class: "label" %></p>
+                    <%= f. text_field :start_day, class: "reserve-field r", value: @start_day, readonly: true %>
+                    <p><%= f.label :end_day, "終了日", class: "label" %></p>
+                    <%= f. text_field :end_day, class: "reserve-field r", value: @end_day, readonly: true %>
+                    <div class="total-day"><%= f.label :day_count, "使用日数：#{@day_count}" %></div>
+                    <%= f.hidden_field :day_count, value: @day_count %>
+                 </div>
+                 <div class="reserve-line">
+                    <%= f.label :total_people, "人数：#{@total_people}" %>
+                    <%= f.hidden_field :total_people, value: @total_people %>
+                 </div>
+                 <div class="reserve-line">
+                    <div class="total-fee"><%= f.label :total_fee, "合計金額", class: "label"%></div>
+                    <%= f.text_field :total_fee, value: @total_fee, class: "reserve-field r",value: @total_fee, readonly: true %>
+                    <p class="confirm">上記内容でよろしければ「予約を確定」を押してください</p>
+                 </div>
+                    <%= f.hidden_field :user_id, value: @login_user.id %>
+                    <%= f.hidden_field :room_id, value: @room.id %>
+                 <p><%= f.submit "予約を確定する", class: "reserve-btn btn" %></p>
+                <% end %>          
+            </div>
+        </div>
+    </div>
+</div>

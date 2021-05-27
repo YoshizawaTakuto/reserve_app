@@ -1,0 +1,22 @@
+<div class="show-reserve">
+    <div class="container">
+        <div class="show-reserve-wrapper">
+            <div class="show-reserve-line">
+                <p>予約した部屋</p>
+                <%= link_to(@reserve.room.name, "/rooms/#{@reserve.room_id}", {class: "reserve-name"}) %>
+            </div>
+            <div class="show-reserve-line">
+                <p>開始日</p>
+                <%= @reserve.start_day %>
+            </div>
+            <div class="show-reserve-line">
+                <p>終了日</p>
+                <%= @reserve.end_day %>
+            </div>
+            <div class="show-reserve-line">
+                <p>価格</p>
+                <%= "#{@reserve.total_fee} 円" %>
+            </div>
+        </div>
+    </div>
+</div>

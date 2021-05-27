@@ -1,0 +1,29 @@
+<div class="sign-up">
+    <div class="container">
+        <div class="sign-up-wrapper">
+            <p class="sign-up-title">新しいアカウントを作成</p>
+             <%= form_with(model: @user) do |f| %>
+             <%= render("shared/error", model: f.object)%>
+              <ul>
+               <li>
+                <span class="mandatory">必須</span>
+                <%= f.text_field :name, class: "text-field", value: @user.name, placeholder: "ユーザー名" %>
+               </li>
+               <li>
+                <span class="mandatory">必須</span>
+                <%= f.email_field :email, class: "text-field", placeholder: "メールアドレス" %>
+               </li>
+               <li>
+                <span class="mandatory">必須</span>
+                <%= f.password_field :password, class: "text-field", placeholder: "パスワード" %>
+               </li>
+                <li>
+                <span class="mandatory">必須</span>
+                <%= f.password_field :password_confirmation, class: "text-field", placeholder: "パスワード確認" %>
+               </li>
+               <%= f.hidden_field :content, value: "初めまして！" %>
+               <p><%= f.submit "新しいアカウントを作成", class: "submit btn" %></p>
+             <% end %>
+        </div>
+    </div>
+</div>
